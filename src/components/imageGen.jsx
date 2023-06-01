@@ -62,25 +62,42 @@ const ImageGenerator = () => {
     const blob = await res.blob();
     setImage(URL.createObjectURL(blob));
   };
+  const handleDownload = () => {
+    if(!image) return ;
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = "image.png";
+    a.click();
+  };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
+    
+    <div className='container al-c'>
+      <div class="style">
+      <h1>Stable Diffusion</h1>
+      </div>
+     
+      <form onSubmit={handleSubmit} classNmae="gen-form">
         <input
           type="text"
+          class="style2"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          style={styles.input}
+        
+          placeholder="Write your prompt here"
         />
-        <button type="submit" style={styles.button}>
+        <button type="submit"  class="submit">
           Generate Image
         </button>
       </form>
-      {image && (
-        <div style={styles.imageContainer}>
+      {image && (<>
+        <div className='result-image'>
           <img src={image} style={styles.image} alt="Generated" />
         </div>
-      )}
+        <button onClick={handleDownload} class="submit">
+          Download Image
+        </button>
+        </>)}
     </div>
   );
 };
