@@ -77,7 +77,7 @@ const ImageGenerator = () => {
       <h1>Stable Diffusion</h1>
       </div>
      
-      <form onSubmit={handleSubmit} classNmae="gen-form">
+      <form onSubmit={handleSubmit} >
         <input
           type="text"
           class="style2"
